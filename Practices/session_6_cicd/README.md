@@ -29,6 +29,8 @@ For an introduction to the core concepts behind GitHub Actions, I recommend read
 
 In this practice you will learn how to build a functional CI/CD pipeline with Github Actions. You will create a workflow that automatically runs unit tests on all pull requests, and deploys the latest version of the master branch to a Kubernetes cluster.
 
+![Alt text](image.png)
+
 ## Practice
 
 ### Continuous Integration and Continuous Delivery (CI/CD)
