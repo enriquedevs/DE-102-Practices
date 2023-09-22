@@ -1,274 +1,367 @@
 # Data Engineering Pipelines Overview and Cloud Providers
-In this lesson, we will explore the fascinating world of data engineering pipelines and how cloud computing has revolutionized the field. We will delve into the benefits of cloud computing for data engineering compared to on-premises servers and examine how data engineering pipelines have evolved with the emergence and accessibility of cloud technologies. By the end of this lesson, you will have a solid understanding of these concepts and their significance in modern data engineering.
 
-## What you will learn
-* Benefits of Cloud Computing for Data Engineering
-* Cloud and On-Prem comparison
-* Evolution of Data Engineering Pipelines with Cloud Computing
-* Types of data pipelines
+In this lesson we will take a look to **cloud computing** vs **on-premise servers** and how the data engineering **pipelines** have evolved with the help of cloud technologies.
 
-# Benefits of Cloud Computing for Data Engineering:
+What you will learn:
 
-## Scalability
-<img src="./documentation_images/scalability.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+- Benefits of Cloud Computing for Data Engineering
+- Cloud and On-Prem comparison
+- Evolution of Data Engineering Pipelines with Cloud Computing
+- Types of data pipelines
 
+## Benefits of Cloud Computing for Data Engineering
 
-Scalability is a key benefit of cloud computing for data engineering. With cloud infrastructure, data engineers can seamlessly scale resources up or down based on demand, accommodating fluctuating workloads without significant upfront investments. This enables organizations to handle increasing data volumes and processing requirements efficiently. Cloud service providers like AWS and GCP offer auto-scaling capabilities, ensuring that resources are dynamically adjusted to meet the needs of data engineering pipelines.
+![Cloud Computing Benefits](./img/cloud_computing.jpg "Cloud Computing Benefits")
 
-In a hypothetical scenario, a data engineering team needs to process and analyze a massive dataset to derive insights for a retail company. With cloud scalability, the team can easily scale up the compute resources to handle the peak loads during seasonal sales or promotions. They can leverage AWS services such as Amazon EMR (Elastic MapReduce) or GCP services like Dataproc to dynamically provision a cluster of compute nodes for distributed data processing. This allows them to efficiently process and analyze the large dataset within a shorter timeframe, enabling the retail company to make data-driven decisions and optimize their business strategies.
+### Scalability
 
-___
+>**Scalability**: Ability to efficiently and dynamically expand or shrink computing resources and infrastructure to meet changing demands and workloads.
 
-## Elasticity
-<img src="./documentation_images/elasticity.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+#### Scenario - Scalability
 
-Elasticity is another significant advantage of cloud computing for data engineering. Cloud infrastructure allows data engineers to dynamically allocate and adjust resources based on workload requirements. This flexibility ensures that the necessary computing power and storage capacity can be provisioned and scaled in real-time, accommodating varying data processing needs. With elasticity, data engineers can optimize resource utilization, improve performance, and reduce costs by only paying for the resources they actually use.
+*You work at Walmart as Data Engineer, you expect receive all the sales data at the **end of day**.*
 
-Consider a data engineering team working on a machine learning project that requires training and inference on large datasets. In this scenario, the team can leverage the elasticity of cloud computing to provision powerful instances for training models on AWS EC2 instances or GCP Compute Engine. Once the models are trained, they can then utilize serverless platforms like AWS Lambda or GCP Cloud Functions for on-demand inference, automatically scaling the number of function instances based on incoming requests. This elasticity allows the team to efficiently handle varying workloads, ensuring optimal performance during peak periods while minimizing costs during idle periods when fewer resources are needed.
+How would you handle this schedule using cloud computing?
 
-___
+#### Solution - Scalability
 
-## Cost Savings
-<img src="./documentation_images/cost_savings.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+- Setup contains minimal RAM to do health checks and CPU cores
+- Set some rules:
+  - When CPU usage is over 90% for more than 1 minute add 1 extra core
+  - When CPU usage is below 50% for more than 1 minute remove 1 core
+  - When RAM usage is over 90% for more than 1 minute double the RAM amount
+  - When RAM usage is below 45% for more than 1 minute halve the RAM
 
-Cost savings is a significant benefit of cloud computing for data engineering. With cloud infrastructure, organizations can avoid upfront hardware investments and reduce maintenance costs associated with on-premises solutions. Cloud providers offer a pay-as-you-go model, where organizations only pay for the resources they consume. This allows data engineers to optimize resource utilization and scale up or down based on demand, eliminating the need for overprovisioning or underutilized hardware. Additionally, cloud services often include managed offerings, reducing the need for manual administration and lowering operational costs.
+>You need to be careful when scaling dinamically, if you don't set maximum and minimum it can decrease efficiency on your solution or go out of budget very easily.
+>
+>Do you have other solution? What is the minimum/maximum RAM and CPUs you will set for this solution and why?
 
-Let's consider a data engineering team tasked with processing and analyzing streaming data from IoT devices for a smart city project. With cloud cost savings, the team can leverage services such as AWS Kinesis or GCP Pub/Sub to ingest and process the streaming data. By utilizing cloud-based managed services, the team can avoid the cost of setting up and maintaining their own data ingestion infrastructure. They can then use serverless computing platforms like AWS Lambda or GCP Cloud Functions for real-time data processing and analysis, paying only for the compute time consumed. This approach enables the team to achieve significant cost savings by leveraging the scalability and cost-efficient architecture provided by cloud services, without the need for upfront investments in hardware or infrastructure.
+#### Still curious - Scalability
 
-___
+- **Horizontal** and **Vertical Scaling** and when you use one or other?
+- What other **policies** or **events** exists that can trigger a scalability change?
 
-## High Availability
-<img src="./documentation_images/high_availability.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+### Cost Savings
 
-High availability is a critical benefit of cloud computing for data engineering. Cloud service providers offer robust infrastructure and redundancy mechanisms to ensure that data and applications are highly available. With features such as data replication, automatic backups, and fault-tolerant architectures, organizations can minimize downtime and ensure continuous access to their data and pipelines. Cloud providers like AWS and GCP operate multiple data centers in different geographical regions, offering data engineers the ability to deploy their infrastructure across availability zones for enhanced resilience.
+There are some key aspects of having a dedicated purchased server that may help reduce costs:
 
-Imagine a data engineering team responsible for maintaining a real-time analytics platform for a global e-commerce company. By leveraging the high availability of cloud services, the team can deploy their data processing pipelines across multiple availability zones using services like AWS Elastic Beanstalk or GCP App Engine. This ensures that even if a specific data center or availability zone experiences an outage, the platform remains accessible and continues to process data. Additionally, they can use managed database services like AWS RDS or GCP Cloud SQL, which automatically handle replication and backups, ensuring data durability and minimizing the risk of data loss. The high availability provided by the cloud enables the team to deliver a reliable and uninterrupted analytics platform to the e-commerce company, ensuring continuous data processing and analysis for business insights.
+- You need no upfront hardware purchases
+- You only pay for what you consume
+- You can scale up/down based on demands
+- Some services such as Lambda or Cloud Functions are self managed
 
-___
+#### Cost Savings - scenario
 
-## Global Accessibility
-<img src="./documentation_images/global_accesibility.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+You are in charge of processing incoming events from IoT devices (Door, Motion, Temperature sensors...), this events can be delivered using a **streaming** such as Pub/Sub, inserting into Database, posting to API...
 
-Global accessibility is a key advantage of cloud computing for data engineering. Cloud service providers have a global presence, offering data engineers the ability to access and manage their infrastructure and data from anywhere in the world. With the cloud, data engineers can collaborate seamlessly with geographically dispersed teams, enabling efficient teamwork and knowledge sharing. Additionally, cloud providers offer content delivery networks (CDNs) that cache and distribute data to multiple regions, reducing latency and ensuring fast and reliable access to data regardless of the user's location.
+How will you setup your cloud infrastructure to save costs compared to a on-premise server?
 
-Consider a multinational organization with data engineering teams located in different countries. By leveraging the global accessibility of cloud services, these teams can work collaboratively on data projects, sharing code, pipelines, and datasets across regions. They can use version control systems like GitHub or GitLab to manage their code repositories, allowing for efficient collaboration and code synchronization. Cloud platforms like AWS and GCP provide secure and encrypted connections, ensuring data privacy and access control as teams work together on data engineering tasks. The global accessibility offered by the cloud enables seamless collaboration and efficient data engineering practices for organizations with distributed teams.
+#### Cost Savings - Solution
 
-___
+- Create a queue using Kinesis or Pub/Sub
+- Setup a lambda or cloud function to process a single event
+- Link the stream to Lambda
+- Set scalability for the lambda
 
-## Disaster Recovery
-<img src="./documentation_images/disaster_recovery.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+#### Cost Savings - Still curious
 
-Disaster recovery is a crucial aspect of data engineering, and cloud computing provides significant advantages in this area. Cloud service providers offer robust disaster recovery mechanisms that help protect data and ensure business continuity in the event of unexpected disruptions. Organizations can replicate their data and infrastructure across different geographical regions, allowing for data redundancy and failover capabilities. Cloud providers also offer automated backup and restoration services, enabling data engineers to quickly recover from data loss or system failures. These disaster recovery features help minimize downtime, ensure data integrity, and provide peace of mind to data engineering teams.
+Why Microservices worked fine for amazon, uber but not for netflix?
 
-Imagine a data engineering team responsible for managing critical data pipelines for a financial institution. To ensure disaster recovery, the team can utilize cloud services such as AWS S3 or GCP Cloud Storage to store regular backups of their datasets and pipeline configurations. They can also set up data replication across multiple regions using services like AWS RDS Multi-AZ or GCP Cloud SQL regional replicas. In the event of a disaster or system failure, the team can quickly restore their data and infrastructure, minimizing downtime and ensuring business continuity. Cloud providers also offer additional disaster recovery services, such as AWS Disaster Recovery and GCP Cloud Disaster Recovery, which provide more advanced features and capabilities for comprehensive disaster recovery planning. The cloud's disaster recovery capabilities enable data engineering teams to protect critical data and maintain the availability of their data pipelines, even in the face of unforeseen events.
-___
+- Article: [Why and How Netflix, Amazon, and Uber Migrated to Microservices: Learn from Their Experience][migrated to microservices]
+- Article: [Reduce costs by 90% by moving from microservices to monolith: Amazon internal case study raises eyebrows][from microservices to monolith]
 
-## Rapid Provisioning and Deployment
-<img src="./documentation_images/rapid_deployment.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+### High Availability
 
-Rapid provisioning and deployment is a significant advantage of cloud computing for data engineering. Cloud service providers offer automated provisioning and deployment capabilities, enabling data engineers to quickly spin up or down infrastructure resources as needed. With just a few clicks or API calls, data engineers can provision virtual machines, storage systems, and networking configurations, significantly reducing the time and effort required to set up and configure infrastructure. This agility allows data engineering teams to respond rapidly to changing requirements, launch new projects, and scale resources to meet evolving data processing needs.
+>**High Availability**: Ability of a system/infrastructure to remain operational for a high % of the time, usually 99.99% of the time.
 
-Imagine a data engineering team tasked with implementing a new data pipeline for a real-time data streaming application. By leveraging the rapid provisioning and deployment capabilities of cloud services, the team can use technologies like AWS Lambda or GCP Cloud Functions to quickly set up event-driven processing logic. These serverless compute services automatically scale resources based on incoming data volume, ensuring efficient and cost-effective processing. The team can also leverage cloud-based messaging services like AWS Kinesis or GCP Pub/Sub for reliable data ingestion and streaming. With the ability to provision and deploy these services rapidly, the team can accelerate the development and deployment of the data pipeline, allowing the application to process streaming data in near real-time.
+High availability must be keeped regardless of maintenance, upgrades, hardware, software or even network failures.
 
-___
+#### Scenario - High Availability
 
-## Automation and Orchestration
-<img src="./documentation_images/automation_and_orchestration.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+You have a system that receives 911 data from real time calls, the source calls your API once then if fails will call the API again on the next 20 seconds then the information is lost.
 
-Automation and orchestration are crucial aspects of data engineering, and cloud computing offers powerful capabilities in this area. Cloud service providers provide robust automation and orchestration tools that enable data engineers to streamline and manage complex data workflows. These tools allow for the automation of repetitive tasks, such as data ingestion, transformation, and data pipeline execution, reducing manual effort and improving operational efficiency. Data engineers can define and schedule workflows, set up dependencies, and incorporate error handling mechanisms to ensure smooth and reliable execution of data engineering pipelines.
+Assuming you have a cloud Docker API to receive this data and you save it to cloud storage ensure app and storage are up 99.99% of the time.
 
-Consider a data engineering team responsible for ingesting data from multiple sources, performing data transformations, and loading it into a data warehouse for analytics. By leveraging cloud automation and orchestration services, such as AWS Step Functions or GCP Cloud Composer, the team can create workflow definitions that automate the entire data pipeline process. They can define tasks, specify their dependencies, and schedule the execution of each step. For example, they can set up automated triggers to start the pipeline when new data arrives in a source system. The workflow can then perform data transformations using AWS Glue or GCP Dataflow and load the transformed data into a data warehouse like AWS Redshift or GCP BigQuery. With automation and orchestration, the team can ensure the timely and accurate execution of the data pipeline while minimizing manual intervention and improving overall productivity.
+#### Solution - High Availability
 
-___
+App:
 
-## Integration with Data Services
-<img src="./documentation_images/integration_with_data_services.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+- Setup deploying blue/green, canary...
+- Setup multicontainer environment (kubernetes)
+- Ensure healthcheck endpoint is verified every minute
+- Setup network failover to mirror site (duplicate network on other cloud provider/other region from same provider)
+- Setup scalability
+- Use load balancer to ensure traffic is distributed evenly
 
-Integration with data services is a key benefit of cloud computing for data engineering. Cloud service providers offer a wide range of data services and tools that seamlessly integrate with data engineering pipelines, enabling efficient data processing, analytics, and machine learning workflows. These services provide specialized functionality for tasks such as data transformation, data storage, data analysis, and predictive modeling. Data engineers can leverage these services to enhance their data engineering pipelines, improve data quality and reliability, and gain valuable insights from their data.
+Storage:
 
-Let's consider a data engineering team working on a project that involves building a recommendation system for an e-commerce platform. The team can utilize cloud-based data services to enhance their data engineering pipeline. They can use AWS Glue or GCP Dataflow for scalable and efficient data transformations, ensuring that the data is prepared for the recommendation model. They can leverage services like AWS S3 or GCP Cloud Storage for storing and accessing large volumes of data required for training the recommendation model. Additionally, they can utilize machine learning services like AWS SageMaker or GCP AI Platform for model training and deployment. These services provide pre-built algorithms and infrastructure for training and serving machine learning models. By integrating these data services into their pipeline, the team can efficiently process, analyze, and model the data to generate personalized recommendations for the e-commerce platform's users.
+- Ensure redundancy is setup
 
-___
+#### Sill Curious - High Availability
 
-## Continuous Innovation and Updates
-<img src="./documentation_images/continuous_innovation.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+- Is it too good to be true? What downside(s) can be observed when trying to keep high availability?
+- What is an SLA? and Why is it so important?
+- Investigate other deployment techniques to minimize downtime
 
-Continuous innovation and updates are inherent benefits of cloud computing for data engineering. Cloud service providers continuously invest in enhancing their offerings and introducing new features and functionalities. Data engineers can leverage these innovations to stay at the forefront of technology and take advantage of the latest tools and capabilities. Cloud providers regularly release updates, security patches, and performance improvements, ensuring that data engineering pipelines are running on the most up-to-date and efficient infrastructure. This continuous cycle of innovation and updates allows data engineers to adapt to evolving industry trends, leverage new technologies, and improve the overall effectiveness and efficiency of their data engineering workflows.
+### Global Accessibility
 
-Consider a data engineering team working on a data processing pipeline for a financial services organization. The team can take advantage of the continuous innovation and updates offered by cloud providers like AWS and GCP. They can leverage services like AWS Glue or GCP Dataflow, which provide automatic updates and improvements to their data transformation capabilities. Additionally, they can benefit from the latest advancements in machine learning by utilizing AWS SageMaker or GCP AI Platform, which receive regular updates and introduce new algorithms and model deployment options. By embracing continuous innovation and updates, the team can ensure that their data engineering pipeline remains at the cutting edge of technology, enabling them to deliver high-quality, efficient, and future-proof solutions for their organization's data processing needs.
+>**Global Accessibility**: Since cloud providers have global presence we can use that to our advantage
 
-___
+#### Scenario - Global Accessibility
 
-## Collaboration and Teamwork
-<img src="./documentation_images/collaboration_and_teamwork.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+You have an app that relies heavily on images, currently they are now stored in your company server.
 
-Cloud computing enables seamless collaboration and teamwork among data engineering teams. Cloud service providers offer a range of collaborative tools and features that facilitate efficient communication, sharing of resources, and joint problem-solving. Data engineers can work together in real-time, regardless of their geographical locations, making it easier to collaborate on complex data engineering projects. Cloud-based platforms provide shared access to code repositories, documentation, and version control systems, enabling teams to work collaboratively and maintain a centralized knowledge base. This enhanced collaboration fosters innovation, accelerates project timelines, and promotes effective knowledge sharing among team members.
+Since the app is used globaly, how can you ensure optimal loading times for all users?
 
-Imagine a data engineering team distributed across different locations, working on a data integration project for a multinational company. By leveraging cloud-based collaboration tools such as AWS CodeCommit or GCP Cloud Source Repositories, team members can securely collaborate on code development and version control. They can use communication platforms like AWS Chime or GCP Hangouts to conduct virtual meetings, share screens, and discuss project requirements and progress in real-time. Additionally, cloud-based project management tools like AWS CloudFormation or GCP Cloud Deployment Manager can help streamline task assignment, track project milestones, and monitor progress. This collaborative environment enables the team to work seamlessly together, leveraging each other's expertise and ensuring efficient project execution, regardless of their physical locations.
+#### Solution - Global Accessibility
 
-___
+You may want to consider using Content Delivery Network on cloud storage
 
-## Monitoring and Logging
-<img src="./documentation_images/monitoring_and_logging.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+#### Sill Curious - Global Accessibility
 
-Monitoring and logging are critical aspects of data engineering, and cloud computing offers robust solutions to facilitate effective monitoring and logging of data engineering pipelines. Cloud service providers offer comprehensive monitoring and logging services that enable data engineers to track the health, performance, and behavior of their pipelines in real-time. These services provide valuable insights into resource utilization, data throughput, and potential bottlenecks, allowing data engineers to identify and resolve issues quickly.
+- What are the advantages of CDN's?
+- Can we solve this problem with data duplication?
 
-Monitoring tools provided by cloud platforms, such as AWS CloudWatch or GCP Stackdriver, offer customizable dashboards, alerts, and metrics to monitor the various components of data engineering pipelines. Data engineers can set up automated notifications and alerts to proactively detect anomalies, performance degradation, or system failures, enabling prompt troubleshooting and resolution.
+### Disaster Recovery
 
-Logging services, such as AWS CloudTrail or GCP Cloud Logging, capture and store detailed logs of activities and events within the data engineering environment. These logs provide an audit trail of operations, allowing data engineers to trace issues, troubleshoot errors, and gain insights into system behavior. Data engineers can use log analytics and search capabilities to query and analyze logs for troubleshooting, performance optimization, and compliance purposes.
+>**Disaster Recovery**:  or Disaster Recovery Protocol (DRP), is the ability to recover from a disruption of any type.
 
-Let's consider a data engineering team responsible for processing and analyzing large volumes of customer data for an e-commerce company. By leveraging cloud-based monitoring and logging services, such as AWS CloudWatch and AWS CloudTrail or GCP Stackdriver and GCP Cloud Logging, the team can monitor the performance and health of their data pipelines. They can set up custom dashboards to visualize metrics like data ingestion rates, processing time, and resource utilization. In case of any anomalies or performance issues, they can receive real-time alerts to take proactive action. The team can also analyze the logs generated by the pipelines to trace and troubleshoot any errors or investigate suspicious activities. This comprehensive monitoring and logging capability ensures the reliability, performance, and security of the data engineering pipelines, helping the team maintain a high-quality data processing infrastructure.
+#### Scenario - Disaster Recovery
 
-___
+Imagine you work at a national bank, havin hundred thousands of operations per second.
 
-## Regulatory Compliance
-<img src="./documentation_images/regulatory_compliance.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+Assume your Database is in cloud, What measurements can you take in case of Database:
 
-Regulatory compliance is a crucial consideration for data engineering, especially in industries that handle sensitive or personally identifiable information (PII). Cloud computing offers various features and services to help data engineers ensure regulatory compliance and meet industry-specific requirements.
+- Network failure
+- Network attack (DDOS...)
+- Record corruption
 
-Cloud service providers, such as AWS and GCP, have implemented stringent security measures and certifications to comply with industry standards and regulations, such as GDPR, HIPAA, and PCI DSS. These providers offer a shared responsibility model, where they take care of the security of the underlying cloud infrastructure, while data engineers are responsible for securing their applications and data within the cloud.
+#### Solution - Disaster Recovery
 
-Cloud platforms provide a range of security services and features, including data encryption, access controls, identity and access management (IAM), and audit logs, to help data engineers protect and secure their data. These services enable data engineers to implement granular access controls, manage user permissions, encrypt data at rest and in transit, and track and monitor access to sensitive information.
+- Network failure
+  - Have an alternative access to internet, alternative VPN/VPC
+  - Database mirroring failover
+  - Master/Slave swap for alternative internet access
+- Record corruption
+  - Restore Database
+  - Database mirroring failover
 
-Moreover, cloud providers offer compliance-oriented services, such as AWS Artifact and GCP Compliance, which provide access to compliance reports, certificates, and other documentation required for audits and regulatory assessments. These services streamline the process of demonstrating compliance to auditors and regulatory bodies, helping data engineers meet the necessary compliance requirements with ease.
+#### Sill Curious - Disaster Recovery
 
-Let's consider a data engineering team working for a healthcare organization that processes patient data. To ensure regulatory compliance with HIPAA, the team can leverage the security and compliance features provided by cloud platforms like AWS and GCP. They can use encryption services, such as AWS Key Management Service (KMS) or GCP Key Management Service (KMS), to encrypt sensitive data at rest and in transit. The team can implement fine-grained access controls using IAM services, ensuring that only authorized personnel have access to the data.
+- Have you ever been on a DRP's practice or real scenario?
+- Have you ever heard about Chaos Engineering?
+- Does SLA's are important when designing DRP's? Why?
+- Should we consider natural disasters or events like: bomb attacks in DRP?
 
-Furthermore, they can configure audit logs and monitoring services, such as AWS CloudTrail or GCP Cloud Audit Logs, to track and log access to patient data, facilitating compliance reporting and monitoring. Cloud platforms also offer compliance documentation and resources, such as AWS Artifact and GCP Compliance, which provide the necessary compliance reports and certifications required for HIPAA audits.
+### Rapid Provisioning and Deployment
 
-By utilizing the security features and compliance-oriented services provided by cloud providers, the data engineering team can maintain regulatory compliance, protect patient data, and confidently meet the stringent requirements of the healthcare industry.
+>**Provisioning**: Setting up and allocating resources, services, or infrastructure components to meet the needs of an application, system, or user.
 
-# Cloud and On-prem comparison
-<img src="./documentation_images/onprem_vs_cloud.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+Some cloud services offer either CLI or UI to easy create and manage resources, this means you can create whole systems with just a few steps.
 
-| Pros                                  | On-Premises Infrastructure                  | Cloud Computing                                      |
-|---------------------------------------|--------------------------------------------|------------------------------------------------------|
-| Scalability                           | Limited scalability due to fixed resources | Highly scalable with on-demand resource provisioning |
-| Cost Savings                          | Potential higher upfront costs              | Lower upfront costs with pay-as-you-go pricing       |
-| Maintenance and Management            | Full control over infrastructure           | Outsourced maintenance and management responsibilities |
-| High Availability                     | Dependent on local infrastructure          | High availability and redundancy built into the cloud |
-| Global Accessibility                 | Limited access from specific locations     | Global access from anywhere with an internet connection |
-| Disaster Recovery                     | Requires dedicated disaster recovery plan  | Built-in disaster recovery mechanisms and options    |
-| Flexibility in Infrastructure         | Fixed infrastructure and limited flexibility | Easily adaptable infrastructure to meet changing needs |
-| Rapid Provisioning and Deployment     | Longer lead times for resource provisioning | Instant provisioning and fast deployment of resources |
-| Automation and Orchestration          | Manual configuration and management        | Automated processes and orchestration capabilities |
-| Integration with Data Services        | Limited integration options                 | Seamless integration with various data services      |
-| On-Demand Resource Provisioning       | Limited resource provisioning flexibility  | On-demand allocation and release of resources        |
-| Continuous Innovation and Updates     | Dependent on internal updates and upgrades  | Continuous updates and access to latest technologies |
-| Collaboration and Teamwork            | Limited collaboration across locations     | Enhanced collaboration and teamwork capabilities   |
-| Monitoring and Logging                | Custom monitoring and logging setup         | Built-in monitoring and logging tools and services  |
-| Regulatory Compliance                 | Full control over compliance measures      | Compliance certifications and tools provided by cloud platforms |
+### Orchestration
 
-# Evolution of Data Engineering Pipelines with Cloud Computing
-<img src="./documentation_images/evolution_of_data_pipelines.jpeg" 
-        alt="drawing" 
-        width="480" 
-        height="480"
-        style="display: block; margin: 0 auto"/>
+>**Orchestration**: Automated coordination and management of multiple tasks, processes or services to achieve an specific output.
 
-Let's explore the transformation of data engineering, from on-premises infrastructure to the cloud, and its impact on data warehouses, databases, data pipelines, and the rise of ELT.
+#### Scenario - Automation and Orchestration
 
-In the past, data engineering revolved around on-premises solutions where organizations built and managed their own data centers. These data centers housed data warehouses and databases, serving as the backbone of data processing.
+You need to create a data pipeline extracting from multiple sources, each data may have dependencies on the product catalog, which you have available via Database, however you must handle errors in a different repository to return to each customer on a log file.
 
-However, as technology advanced and data processing needs grew, scaling on-premises infrastructure became challenging. Organizations struggled to accommodate increasing data volumes and processing requirements, necessitating a new approach.
+- What are the general considerations you have over this?
 
-The emergence of cloud computing presented a transformative alternative. Cloud service providers offered virtually unlimited scalability, elasticity, and flexibility, allowing organizations to leverage these advantages.
+#### Solution - Automation and Orchestration
 
-Cloud-based data warehouses provided the ability to scale storage and compute resources on-demand. This scalability allowed data engineers to handle vast amounts of data seamlessly, accommodating fluctuating workloads without substantial upfront investments.
+- **reading from multiple sources**: By reading from multiple sources you may want to consider different trigger/schedule
+- **dependencies on the product catalog**:Depending on the source you may want to have different initial steps to fill initial data to have it normalized
+- **error handling**: Save logs on a individual file for each record/request/file... if record could not be processed put the file log into a cloud storage
+- Dump records into the final OLAP database
 
-Cloud-based databases also underwent significant changes. Managed database services eliminated manual database administration tasks, offering high availability, automatic backups, and built-in replication. This shift reduced the burden on data engineers, enabling them to focus on extracting insights from the data.
+#### Sill Curious - Automation and Orchestration
 
-In the on-premises world, data transformations occurred before loading data into the warehouse, resulting in delays and resource-intensive operations. However, the cloud's elasticity and computational power revolutionized this approach.
+- What is the name of the process described above?
+- What other orchestrators you know?
+- Did you ever heard about CI/CD
+- Why is it so important orchestration is automated?
 
-In the cloud era, data engineers could load raw, unprocessed data directly into cloud-based data warehouses. This change facilitated quick ingestion and storage of large volumes of data in its raw format. Data transformations and analysis could then be performed directly within the database using powerful distributed computing resources.
+### Integration with Data Services
 
-The cloud had a profound impact on modern data architecture, enabling the integration of diverse structured and unstructured data sources across organizations. Cloud-based storage services, such as object storage and data lakes, offered cost-effective options for storing and accessing massive volumes of raw data.
+Integration with data services means we don't need to configure everything from scratch but also means on every platform they could be specialized services that help us further.
 
-The shift to ELT provided multiple advantages. It reduced the time and effort required for data preprocessing, allowing data engineers to focus on extracting insights and value from the data. Moreover, it enabled agile and iterative data processing, allowing engineers to refine and adjust transformations as requirements emerged or data evolved.
+#### Exercise - Integration with Data Services
 
-Scalability and on-demand resource provisioning capabilities in the cloud transformed data engineering pipelines. Data engineers could dynamically scale resources based on workload requirements, efficiently handling varying data volumes and processing needs. This elasticity ensured pipelines could adapt to peak loads during high-demand periods and scale back during quieter periods, optimizing resource utilization and reducing costs.
+Complete the chart:
 
-The cloud also brought new possibilities for pipeline orchestration and automation. Cloud-based services and tools provided automation and orchestration capabilities, simplifying the design and management of complex workflows. Scheduling, dependency management, error handling, and monitoring became more efficient and reliable, ensuring streamlined execution of data engineering pipelines.
+| On-Premises Service      | AWS Equivalent           | GCP Equivalent           |
+|-------------------------|--------------------------|--------------------------|
+| Data Warehouse           | | |
+| Hadoop Ecosystem         | | |
+| Relational Database      | | |
+| NoSQL Database           | | |
+| ETL Tool                 | | |
+| Data Integration Tool    | | |
+| Message Queue            | | |
+| Object Storage           | | |
+| File Storage             | | |
+| Data Lake                | | |
+| Workflow Orchestration   | | |
+| Analytics and BI         | | |
+| Real-time Streaming      | | |
 
-Additionally, the cloud's integration with various data services and tools expanded the horizons of data engineering pipelines. Data engineers gained access to a rich ecosystem of data processing, analytics, and machine learning services, leveraging specialized tools for specific tasks within the pipeline. This integration facilitated the seamless flow of data between services, enabling end-to-end data processing and analysis workflows.
+#### Solution - Integration with Data Services
 
-In conclusion, the evolution from on-premises infrastructure to the cloud has revolutionized data engineering. The scalability, elasticity, and flexibility of the cloud have reshaped data warehouses, databases, and data pipelines. This shift, coupled with the emergence of ELT, has propelled modern data architecture into new frontiers. Data engineers now have the power to drive innovation, uncover valuable insights, and guide organizations on their data-driven journey.
+| On-Premises Service      | AWS Equivalent           | GCP Equivalent           |
+|--------------------------|--------------------------|--------------------------|
+| Data Warehouse           | Amazon Redshift          | BigQuery                  |
+| Hadoop Ecosystem         | Amazon EMR               | Google Dataproc           |
+| Relational Database      | Amazon RDS               | Google Cloud SQL         |
+| NoSQL Database           | Amazon DynamoDB          | Google Cloud Firestore   |
+| ETL Tool                 | AWS Glue                 | Cloud Dataflow            |
+| Data Integration Tool    | AWS Data Pipeline        | Cloud Composer            |
+| Message Queue            | Amazon SQS               | Cloud Pub/Sub             |
+| Object Storage           | Amazon S3                | Google Cloud Storage     |
+| File Storage             | Amazon EFS               | Google Cloud Filestore   |
+| Data Lake                | AWS Lake Formation       | Google Cloud Storage & BigQuery  |
+| Workflow Orchestration   | AWS Step Functions       | Google Cloud Composer    |
+| Analytics and BI         | Amazon QuickSight        | Google Data Studio        |
+| Real-time Streaming      | Amazon Kinesis           | Cloud Dataflow & Cloud Pub/Sub |
 
-# Types of data pipelines
-Data pipelines play a crucial role in data engineering by enabling the efficient and reliable flow of data from various sources to its destination for processing, analysis, and storage. A data pipeline consists of a series of interconnected processes and operations that extract, transform, and load (ETL) data to create a unified and usable dataset. With the advent of cloud computing, data pipelines have undergone significant transformations, leveraging the benefits offered by cloud services and technologies.
+### Continuous Innovation and Updates
 
-In the cloud, data pipelines benefit from the scalability, flexibility, and automation capabilities provided by cloud platforms. Cloud-based data pipelines can handle large volumes of data, accommodate variable workloads, and automatically scale resources as needed. They can be designed to ingest data from diverse sources, such as databases, applications, streaming platforms, and external APIs.
+Cloud service providers continuously invest in enhancing their offerings and introducing new features and functionalities, you can use these changes in your pipelines and systems, without changing them yourself and without any downtime.
 
-## ETL
-ETL pipelines involve extracting data from multiple sources, applying transformations to cleanse, aggregate, and structure the data, and loading it into a target system or data warehouse. In an ETL pipeline, data is typically transformed before loading, ensuring that the target system receives clean and organized data. Cloud services like AWS Glue and Google Cloud Dataflow provide ETL capabilities for building and managing these pipelines.
+### Collaboration and Teamwork
 
-___
+Cloud-based platforms provide shared access to code repositories, documentation, and version control systems, enabling teams to work collaboratively and maintain a centralized knowledge base.
 
-## ELT
-ELT pipelines differ from ETL pipelines in terms of the sequencing of data processing steps. In an ELT pipeline, data is first extracted from source systems and loaded into a target storage, such as a data lake or a cloud-based data warehouse. The transformations are then applied to the data within the target storage, taking advantage of the computing power and scalability offered by the cloud. Services like AWS Glue, Google Cloud Dataflow, and Snowflake support ELT pipelines.
+### Monitoring and Logging
 
-___
+Monitoring and logging are critical aspects of data engineering, and cloud computing offers robust solutions to facilitate effective monitoring and logging of data engineering pipelines.
 
-## Machine Learning
-Data pipelines for machine learning involve the extraction, preprocessing, and transformation of data to train and deploy machine learning models. These pipelines encompass tasks such as data collection, feature engineering, model training, evaluation, and deployment. Cloud platforms like AWS and Google Cloud offer a range of services, such as AWS SageMaker and Google Cloud AI Platform, specifically designed for building end-to-end machine learning pipelines.
+>Accurate logs can give you metrics, dashboards and alerts in real time of your system.
 
-___
+#### Still Curious - Monitoring and Logging
 
-## Analytics
-Analytics pipelines focus on processing and analyzing data to derive insights and support decision-making. These pipelines involve data extraction from various sources, data transformation, aggregation, and loading into analytics tools or data visualization platforms. Cloud services like AWS Glue, Google Cloud Dataflow, and BigQuery are commonly used in building analytics pipelines.
+- Could you explain what is a log database?
+- Have you ever heard about Change Data Capture (CDC)? Is it possible to replicate all changes of a database using CDC?
+- What are the use of log databases for the following scenarios:
+  - Monitoring and Troubleshooting
+  - Incident Response
+  - Compliance and Auditing
+  - Performance Optimization
+  - Forensics and Investigations
+  - Capacity Planning
+  - Business Intelligence
+  - Alerting and Notifications
+
+### Regulatory Compliance
+
+Regulatory compliance is a crucial consideration for data engineering, especially in industries that handle sensitive or personally identifiable information (PII).
+
+>Cloud service providers, such as AWS and GCP, have implemented stringent security measures and certifications to comply with industry standards and regulations, such as GDPR, HIPAA, and PCI DSS.
+
+## Cloud and On-prem comparison
+
+![Cloud vs On Premise](./img/cloud_vs_onpremise.png "Cloud vs On Premise")
+
+So, is cloud the ultimate solution? Not in all cases, you may need to adapt with the current situation and have in consideration advantages, but not everything is an advantage.
+
+### Exercise - Cloud vs On-prem
+
+Could you fill the following chart?
+
+| Feature                           | On-Premises Infrastructure Pro | Cloud Computing Pro | On-Premises Infrastructure Con | Cloud Computing Con |
+| --------------------------------- | - | - | - | - |
+| Scalability                       | | |
+| Cost Savings                      | | |
+| Maintenance and Management        | | |
+| High Availability                 | | |
+| Global Accessibility              | | |
+| Disaster Recovery                 | | |
+| Flexibility in Infrastructure     | | |
+| Rapid Provisioning and Deployment | | |
+| Automation and Orchestration      | | |
+| Integration with Data Services    | | |
+| On-Demand Resource Provisioning   | | |
+| Continuous Innovation and Updates | | |
+| Collaboration and Teamwork        | | |
+| Monitoring and Logging            | | |
+| Regulatory Compliance             | | |
+
+### Still Curious - Cloud vs On-prem
+
+| Feature                           | On-Premises Infrastructure Pro | Cloud Computing Pro | On-Premises Infrastructure Con | Cloud Computing Con |
+| --------------------------------- | ----------------------------- | ------------------- | ------------------------------ | ------------------- |
+| Scalability                       | Customizable scaling based on existing hardware. | Easily scale resources up or down based on demand. | Initial capital expenditure on hardware. Limited scalability based on physical resources. | Monthly subscription costs may add up. Limited control over underlying infrastructure. Potential vendor lock-in. |
+| Cost Savings                      | Capital expenses are spread out over time. Predictable costs for fixed infrastructure. | Reduced upfront capital expenditure. Pay-as-you-go pricing allows cost optimization. | Higher initial capital investment. Limited flexibility for cost reduction. | Costs can escalate with high usage or inefficient resource management. Vendor pricing can be complex to understand. |
+| Maintenance and Management        | Full control over infrastructure management. Customizable maintenance and security policies. | Reduced hardware maintenance responsibilities. Cloud providers handle hardware upkeep and security patching. | Requires dedicated IT staff for infrastructure management. Potential for downtime during maintenance. | Limited control over hardware maintenance schedules. Reliance on cloud provider's maintenance processes. |
+| High Availability                 | Can implement high availability configurations on-premise. Full control over redundancy and failover mechanisms. | Cloud providers offer high availability zones and redundancy options. Downtime risk is reduced through provider's infrastructure. | Requires significant investment and expertise for high availability. Downtime risk due to hardware failures. | Limited control over underlying infrastructure reliability. Downtime risk due to cloud provider outages. |
+| Global Accessibility              | Data and services can be accessed locally. | Globally distributed data centers enable low-latency access worldwide. | Limited global accessibility without multiple data centers. Slower access for remote users. | Data sovereignty and compliance challenges may arise when crossing borders. |
+| Disaster Recovery                 | Full control over disaster recovery planning and implementation. Customizable backup and recovery solutions. | Cloud providers offer automated backup and disaster recovery services. Redundant data centers enhance disaster recovery capabilities. | Requires significant investment and expertise for disaster recovery planning. Backup hardware and data center replication can be costly. | Limited control over the timing and execution of disaster recovery processes. Costs can escalate for extensive data recovery. |
+| Flexibility in Infrastructure     | Full control over infrastructure design and customization. Ability to select and configure hardware and software components. | Infrastructure is highly flexible and can be provisioned or scaled based on specific needs. Wide range of services and configurations available. | Longer lead times for infrastructure changes. Requires in-house expertise for configuration and maintenance. | Limited control over underlying hardware and software configurations. May require adapting to cloud provider's services and offerings. |
+| Rapid Provisioning and Deployment | Immediate access to on-premise resources. | Rapid provisioning and deployment of resources. Shorter time to market for new services and applications. | Resource provisioning can be constrained by available hardware. Longer lead times for hardware procurement. | Potential for over-provisioning and cost escalation if not managed properly. |
+| Automation and Orchestration      | Customizable automation and orchestration based on on-premise infrastructure. | Cloud providers offer automation tools and orchestration services for resource management and scaling. | Requires in-house development of automation scripts and tools. Limited access to cloud-native automation features. | Learning curve for cloud-specific automation tools. Potential vendor lock-in with proprietary automation solutions. |
+| Integration with Data Services    | Full control over data integration tools and platforms. Customizable data integration solutions. | Wide range of cloud-based data integration services and connectors. Easier integration with cloud-native data services. | Development and maintenance of data integration solutions can be resource-intensive. Limited access to cloud-specific data connectors. | Integration with on-premise data sources may require additional configurations and security measures. |
+| On-Demand Resource Provisioning   | Resources are available on-demand based on existing infrastructure. | Resources can be provisioned on-demand, offering flexibility and scalability. Pay-as-you-go pricing model. | Limited scalability based on existing hardware. Longer lead times for provisioning additional resources. | Costs can escalate with excessive resource provisioning if not well-managed. |
+| Continuous Innovation and Updates | Control over the timing and scope of updates. Can choose to delay or skip updates based on specific needs. | Cloud providers continuously innovate and update services with new features and improvements. Users benefit from the latest technology and security updates. | Responsibility for planning and implementing updates, which can be time-consuming. Risk of using outdated software. | Limited control over the timing and scope of cloud provider updates. Potential for service disruptions during updates. |
+| Collaboration and Teamwork        | Collaboration tools and platforms can be customized to specific needs. Full control over access and permissions. | Cloud-based collaboration tools facilitate remote work and team collaboration. Easily share and collaborate on documents and data. | Requires in-house management and maintenance of collaboration tools. Limited accessibility for remote teams. | Data security and compliance challenges may arise when using cloud-based collaboration tools. Reliance on third-party services. |
+| Monitoring and Logging            | Customizable monitoring and logging solutions. Full control over data retention policies. | Cloud providers offer built-in monitoring and logging services. Automated log retention and analysis capabilities. | Requires in-house development and maintenance of monitoring and logging systems. Limited scalability for handling large volumes of logs. | Costs may increase with extensive log storage and analysis. Potential challenges in managing log data across multiple cloud services. |
+| Regulatory Compliance             | Full control over compliance measures and policies. Customizable security configurations. | Cloud providers offer compliance certifications and controls for various regulations (e.g., GDPR, HIPAA). Simplified compliance reporting with built-in tools. | Responsibility for compliance audits and reporting. Compliance can be resource-intensive to maintain. | Shared responsibility model for compliance, with cloud provider managing some aspects. Potential concerns about data sovereignty and third-party compliance management. |
+
+## Evolution of Data Engineering Pipelines with Cloud Computing
+
+![Cloud Evolution](./img/cloud_evolution.png "Cloud Evolution")
+
+- Early 2000s - **Traditional ETL**: Data engineering pipelines primarily rely on on-premises ETL (Extract, Transform, Load) processes with fixed hardware and limited scalability.
+- Mid-2000s - **Emergence of Hadoop**: Hadoop and MapReduce gain popularity, allowing for distributed data processing, but requiring complex cluster management.
+- Late 2000s - **Cloud Data Warehouses**: The rise of cloud data warehouses like Amazon Redshift and Google BigQuery introduces scalable storage and analytics in the cloud.
+- Early 2010s - **Serverless Computing**: Serverless architecture and FaaS (Function as a Service) models begin simplifying data pipeline development and management.
+- Mid-2010s - **Managed Big Data Services**: Cloud providers offer managed big data services like Amazon EMR and Google Dataprep, further abstracting infrastructure management.
+- Late 2010s - **Data Lakes**: Organizations adopt data lakes for cost-effective storage and processing of diverse data types, with services like AWS S3 and Azure Data Lake Storage.
+- Early 2020s - **Kubernetes Orchestration**: Kubernetes gains popularity for containerized data pipelines, providing scalability and orchestration capabilities.
+- Mid-2020s - **Real-time Stream Processing**: Adoption of stream processing platforms like Apache Kafka and cloud-native solutions for real-time data pipelines.
+- Present - **Serverless Data Pipelines**: Adoption of serverless data processing services like AWS Glue and Azure Data Factory, simplifying pipeline development.
+- Future - **AI and ML Integration**: Increased integration of AI and ML into data pipelines for predictive analytics and automation.
+- Ongoing - **Continuous Innovation**: Cloud providers continue to innovate, offering new tools and services to enhance data engineering pipelines.
+- Beyond - **Hybrid and Multi-Cloud**: Organizations explore hybrid and multi-cloud strategies for flexibility and risk mitigation in data engineering.
+
+### Still Curious - Evolution Pipelines
+
+Article: [Moving on-premises to cloud][Moving on-prem to cloud]
+
+## Types of data pipelines
+
+![Data Pipeline](./img/data_pipeline.png "Data Pipeline")
+
+All the data engineering pipelines have the purpouse of getting the information from a source (API, Database, Stream, Files...) and dump it into an OLAP Database
+
+### ETL
+
+Extraction-Transformation-Load (ETL) is a pipeline that is usually required when your source is not normalized or when if dumped as it is in the OLAP system it will be hard to query.
+
+>Ex. If you need to combine sources such as API's that may repeat values, or do additional requests to that same API to get all the information or these transformations consume lots of resources you may want to consider using ETL
+
+ETL high resource usage happens when pre-processing before dumping the data
+
+### ELT
+
+Extraction-Load-Transformation (ELT) is a pipeline that does not transform the data before dumping it in the OLAP system, does this means data is never transformed? No. The data could be used as it is or could be transformed when querying the information.
+
+>Ex. Your customer need the sales report as fresh as possible during the day, the data is coming on a stream (real time), data is semi-normalized, but is not required to be processed to generate reports for the customer (which are the main priority). In this scenario ELT could be a good option.
+
+ELT high resource usage happens when storing data and when querying the data.
+
+### Machine Learning
+
+Data Pipelines with machine learning are the "same" as ETL pipelines, but the transformation step is replaced by AI models.
+
+>Cloud platforms like AWS and Google Cloud offer a range of services, such as AWS SageMaker and Google Cloud AI Platform, specifically designed for building end-to-end machine learning pipelines.
+
+## Links
+
+- [Moving on-premises to cloud][Moving on-prem to cloud]
+- [Why and How Netflix, Amazon, and Uber Migrated to Microservices: Learn from Their Experience][migrated to microservices]
+- [Reduce costs by 90% by moving from microservices to monolith: Amazon internal case study raises eyebrows][from microservices to monolith]
+
+[Moving on-prem to cloud]: https://medium.sqldbm.com/moving-from-on-premises-to-cloud-the-data-migration-guide-469323d360b4
+[migrated to microservices]: https://www.hys-enterprise.com/blog/why-and-how-netflix-amazon-and-uber-migrated-to-microservices-learn-from-their-experience/
+[from microservices to monolith]: https://devclass.com/2023/05/05/reduce-costs-by-90-by-moving-from-microservices-to-monolith-amazon-internal-case-study-raises-eyebrows/
