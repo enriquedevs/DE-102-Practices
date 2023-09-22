@@ -2,7 +2,7 @@
 
 ## Create a Cloud Account
 
-A Version of these steps is also available with images [here][md_img]
+![GCP](./img/gcp_2.png "GCP")
 
 For this course we will be using mostly a Google Cloud Platform (GCP) free account. Follow the steps to setup your account.
 
@@ -45,11 +45,14 @@ Notes:
     - Expiration date
     - CVC
     - Cardholder name
+
     - Click "Start my free trial"
 
 >At this point you should see the welcome page, no charges will be sent to your card unless you activate the "full account"
 
 ## Exercise
+
+![GCP](./img/gcp_2.png "GCP")
 
 In the previous lesson we saw some service equivalents for [On-Premises / AWS / GCP][services equivalences]; using that chart, your knowledge and external services you know: migrate the following pipeline into a GCP environment.
 
@@ -141,6 +144,8 @@ Fill the charts:
 
 ## Still curious
 
+![Still Curious](./img/still_curious.png "Still Curious")
+
 - What architecture we use here ETL/ELT?
 - Have you ever heard about ETLT?
   - Article: [What Data Pipeline Architecture should I use?][gcp architecture]
@@ -156,5 +161,4 @@ Fill the charts:
 [gcp]: https://cloud.google.com/
 [gcp architecture]: https://cloud.google.com/blog/topics/developers-practitioners/what-data-pipeline-architecture-should-i-use/
 
-[md_img]: ./README_IMG.md
 [services equivalences]: ../session_2_de_overview_and_cloud#solution---integration-with-data-services
