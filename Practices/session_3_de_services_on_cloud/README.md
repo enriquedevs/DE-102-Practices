@@ -2,6 +2,8 @@
 
 ## Create a Cloud Account
 
+A Version of these steps is also available with images [here][md_img]
+
 For this course we will be using mostly a Google Cloud Platform (GCP) free account. Follow the steps to setup your account.
 
 Notes:
@@ -52,3 +54,5 @@ Notes:
 - [GCP site][gcp]
 
 [gcp]: https://cloud.google.com/
+
+[md_img]: ./README_IMG.md
