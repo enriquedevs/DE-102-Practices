@@ -11,6 +11,8 @@ What you will learn:
 
 ## Benefits of Cloud Computing for Data Engineering
 
+![Cloud Computing Benefits](./img/cloud_computing.jpg "Cloud Computing Benefits")
+
 ### Scalability
 
 >**Scalability**: Ability to efficiently and dynamically expand or shrink computing resources and infrastructure to meet changing demands and workloads.
@@ -259,6 +261,8 @@ Regulatory compliance is a crucial consideration for data engineering, especiall
 
 ## Cloud and On-prem comparison
 
+![Cloud vs On Premise](./img/cloud_vs_onpremise.png "Cloud vs On Premise")
+
 So, is cloud the ultimate solution? Not in all cases, you may need to adapt with the current situation and have in consideration advantages, but not everything is an advantage.
 
 ### Exercise - Cloud vs On-prem
@@ -305,6 +309,8 @@ Could you fill the following chart?
 
 ## Evolution of Data Engineering Pipelines with Cloud Computing
 
+![Cloud Evolution](./img/cloud_evolution.png "Cloud Evolution")
+
 - Early 2000s - **Traditional ETL**: Data engineering pipelines primarily rely on on-premises ETL (Extract, Transform, Load) processes with fixed hardware and limited scalability.
 - Mid-2000s - **Emergence of Hadoop**: Hadoop and MapReduce gain popularity, allowing for distributed data processing, but requiring complex cluster management.
 - Late 2000s - **Cloud Data Warehouses**: The rise of cloud data warehouses like Amazon Redshift and Google BigQuery introduces scalable storage and analytics in the cloud.
@@ -323,6 +329,8 @@ Could you fill the following chart?
 Article: [Moving on-premises to cloud][Moving on-prem to cloud]
 
 ## Types of data pipelines
+
+![Data Pipeline](./img/data_pipeline.png "Data Pipeline")
 
 All the data engineering pipelines have the purpouse of getting the information from a source (API, Database, Stream, Files...) and dump it into an OLAP Database
 
@@ -350,10 +358,10 @@ Data Pipelines with machine learning are the "same" as ETL pipelines, but the tr
 
 ## Links
 
-[Moving on-premises to cloud][Moving on-prem to cloud]
+- [Moving on-premises to cloud][Moving on-prem to cloud]
+- [Why and How Netflix, Amazon, and Uber Migrated to Microservices: Learn from Their Experience][migrated to microservices]
+- [Reduce costs by 90% by moving from microservices to monolith: Amazon internal case study raises eyebrows][from microservices to monolith]
 
 [Moving on-prem to cloud]: https://medium.sqldbm.com/moving-from-on-premises-to-cloud-the-data-migration-guide-469323d360b4
 [migrated to microservices]: https://www.hys-enterprise.com/blog/why-and-how-netflix-amazon-and-uber-migrated-to-microservices-learn-from-their-experience/
 [from microservices to monolith]: https://devclass.com/2023/05/05/reduce-costs-by-90-by-moving-from-microservices-to-monolith-amazon-internal-case-study-raises-eyebrows/
-
-[img_scalability]: ./documentation_images/scalability.png
