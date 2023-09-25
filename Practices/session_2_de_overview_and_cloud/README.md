@@ -356,12 +356,22 @@ Data Pipelines with machine learning are the "same" as ETL pipelines, but the tr
 
 >Cloud platforms like AWS and Google Cloud offer a range of services, such as AWS SageMaker and Google Cloud AI Platform, specifically designed for building end-to-end machine learning pipelines.
 
+## Still curious
+
+![Still Curious](./img/still_curious.png "Still Curious")
+
+- Did you complete all the still curious questions?
+- Did you know AWS exists to support AWS services, not to support you?
+  - Article: [AWS History][aws history]
+
 ## Links
 
 - [Moving on-premises to cloud][Moving on-prem to cloud]
 - [Why and How Netflix, Amazon, and Uber Migrated to Microservices: Learn from Their Experience][migrated to microservices]
 - [Reduce costs by 90% by moving from microservices to monolith: Amazon internal case study raises eyebrows][from microservices to monolith]
+- [AWS History][aws history]
 
 [Moving on-prem to cloud]: https://medium.sqldbm.com/moving-from-on-premises-to-cloud-the-data-migration-guide-469323d360b4
 [migrated to microservices]: https://www.hys-enterprise.com/blog/why-and-how-netflix-amazon-and-uber-migrated-to-microservices-learn-from-their-experience/
 [from microservices to monolith]: https://devclass.com/2023/05/05/reduce-costs-by-90-by-moving-from-microservices-to-monolith-amazon-internal-case-study-raises-eyebrows/
+[aws history]: https://techcrunch.com/2016/07/02/andy-jassys-brief-history-of-the-genesis-of-aws/
