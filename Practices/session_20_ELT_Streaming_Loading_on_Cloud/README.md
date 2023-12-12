@@ -1,4 +1,4 @@
-# Streaming
+# ELT Streaming Loading on Cloud​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

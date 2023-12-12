@@ -1,4 +1,4 @@
-# Streaming
+# Loading Streaming and Batch data on Data Warehouse​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

@@ -1,4 +1,4 @@
-# Streaming
+# NoSQL services on Cloud and Integration on Data Pipeline​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

@@ -1,4 +1,4 @@
-# Streaming
+# Streaming and Batch processing on Spark as a Service​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

@@ -1,4 +1,4 @@
-# Streaming
+# Interview Readiness for Semi Senior Data Engineer​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

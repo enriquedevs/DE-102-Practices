@@ -1,4 +1,4 @@
-# Streaming
+# SQL and Coding Challenge Interview Readiness​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

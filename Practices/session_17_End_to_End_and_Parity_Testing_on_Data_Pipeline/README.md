@@ -1,4 +1,4 @@
-# Streaming
+# End to End and Parity Testing on Data Pipeline​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

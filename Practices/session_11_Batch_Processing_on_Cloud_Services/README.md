@@ -1,4 +1,4 @@
-# Streaming
+# Batch Processing on Cloud Services​
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

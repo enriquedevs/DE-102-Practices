@@ -1,4 +1,4 @@
-# Streaming
+# Troubleshooting missing mismatched and duplicate data
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 

@@ -1,4 +1,4 @@
-# Streaming
+# Data Warehouse on Cloud and External Tables
 
 In this practice we will learn about Streaming and how is integrated on Data Engineering environment.
 
